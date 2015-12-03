@@ -1,0 +1,46 @@
+<html ng-app="SaveMe">
+	<head>
+		<title>SaveMe</title>
+		<script src="/js/lodash.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+		<script src="/js/angular-simple-logger.js"></script>
+		<script src="/js/angular-google-maps.min.js"></script>
+		<script>
+			var saveMe = angular.module('SaveMe', [
+				'uiGmapgoogle-maps'
+			]);
+			
+			saveMe.controller('MainController', ['$scope', '$timeout', function($scope, $timeout) {
+				$scope.map = {
+					center: {
+						latitude: 45,
+						longitude: -73
+					},
+					zoom: 8,
+					control: {}
+				}
+				
+				$timeout(function() {
+					navigator.geolocation.watchPosition(function(position) {
+						console.log(position.coords);
+						console.log($scope.map.control);
+						$scope.map.control.refresh({
+							latitude: position.coords.latitude,
+							longitude: position.coords.longitude
+						});
+					});
+				});
+			}]);
+		</script>
+		<style>
+			.angular-google-map-container {
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body ng-controller="MainController">
+		<ui-gmap-google-map center="map.center"
+							zoom="map.zoom"
+							control="map.control"></ui-gmap-google-map>
+	</body>
+</html>
