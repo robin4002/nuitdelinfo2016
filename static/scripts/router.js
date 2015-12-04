@@ -13,10 +13,22 @@
 				templateUrl: '/partials/map.html',
 				controller: 'MapController'
 			})
+
+			.state('infos', {
+				url: '/infos',
+				templateUrl: '/partials/infos.html',
+				controller: 'InfosController'
+			})
+			.state('notifs', {
+				url: '/notifications',
+				templateUrl: '/partials/notifs.html',
+				controller: 'NotifsController'
+			})
 			.state('test', {
 				url: '/test',
 				templateUrl: '/partials/test.html',
 				controller: 'TestController'
+
 			})
 	}]);
 }).call(this);
