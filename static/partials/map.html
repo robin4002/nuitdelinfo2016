@@ -1,6 +1,12 @@
 <div class="map_page">
 	<div id="map" class="map_full"></div>
 	<div class="row buttons_container"> 
+		<div class="btn-group" role="group" aria-label="...">
+			<button type="button" class="btn btn-default" ng-class="{active: !car}"
+				ng-click="toggleCar(false)"><img src="/img/Walking-24.png"><br>A pied</button>
+			<button type="button" class="btn btn-default" ng-class="{active: car}"
+				ng-click="toggleCar(true)"><img src="/img/Car-24.png"><br>Voiture</button>
+		</div>
 		<button type="button" class="saveMe btn btn-success col-md-12"
 					ng-click="saveMe()">Sauvez-Moi !</button>
 		<button type="button" class="signalDanger btn btn-danger col-md-12"
