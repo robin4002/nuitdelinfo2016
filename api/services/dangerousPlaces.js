@@ -5,7 +5,7 @@ app
                 res.status(500).json({})
             } else {
                 res.status(200).json({
-                    dangerousPlaces: places
+                    dangerousPlaces: result
                 })
             }
         })
@@ -16,7 +16,7 @@ app
                 res.status(500).json({})
             } else {
                 res.status(200).json({
-                    dangerousPlace: place
+                    dangerousPlace: result
                 })
             }
         })
