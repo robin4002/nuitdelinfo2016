@@ -14,6 +14,10 @@
 			
 			saveMe.controller('MainController', ['$scope', '$timeout', '$http', function($scope, $timeout, $http) {
 				$scope.map;
+				$scope.markers = new Array();
+				$scope.directionsService = new google.maps.DirectionsService;
+				$scope.directionsDisplay = new google.maps.DirectionsRenderer;
+				
 				$timeout(function() {
 					var initMap = function() {
 						$scope.map = new google.maps.Map(document.getElementById('map'), {
@@ -23,6 +27,7 @@
 							},
 							zoom: 10
 						});
+						$scope.directionsDisplay.setMap($scope.map);
 						
 						navigator.geolocation.watchPosition(function(position) {
 							$scope.coords = position.coords.latitude + ',' + position.coords.longitude;
@@ -33,17 +38,20 @@
 					initMap();
 				});
 				
-				$scope.addMarker = function(coordinates) {
-					
+				$scope.addMarker = function(coordinates, name, icon) {
+					var marker = new google.maps.Marker({
+						position: coordinates,
+						map: $scope.map,
+						title: name || '',
+						icon: icon
+					});
+					$scope.markers.push(marker);
 				};
 				
-				$scope.directionsService = new google.maps.DirectionsService;
-				$scope.directionsDisplay = new google.maps.DirectionsRenderer;
-				$scope.findPath = function() {
-					$scope.directionsDisplay.setMap($scope.map);
+				$scope.findPath = function(origin, destination) {
 					$scope.directionsService.route({
-						origin: $scope.coords,
-						destination: $scope.coords2,
+						origin: origin,
+						destination: destination,
 						travelMode: google.maps.TravelMode.DRIVING
 					}, function(response, status) {
 						if (status === google.maps.DirectionsStatus.OK) {
@@ -65,6 +73,7 @@
 	</head>
 	<body ng-controller="MainController">
 		<div id="map" width="400" height="400"></div>
-		<input type="button" ng-click="findPath()">
+		<input type="button" ng-click="findPath()" value="FindPath">
+		<input type="button" ng-click="addMarker({lat: 37, lng: 38}, 'Bliblou', 'http://img2.wikia.nocookie.net/__cb20110607215331/kirby/images/7/73/Kirby_Artwork_%28Wii%29.png')" value="AddMarker">
 	</body>
 </html>
