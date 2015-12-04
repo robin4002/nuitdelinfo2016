@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>Autorunner</name>
+    <description></description>
+    <version>1.0</version>
+    <author></author>
+    <author-email></author-email>
+    <author-website></author-website>
+    <app-id></app-id>
+    <unique-id>mq4njje893h0</unique-id>
+    <saved-with-version>21600</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>630</width>
+        <height>360</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Hide address bar">No</prop>
+        <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Preview browser">(default)</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use iOS retina display">iPhone only</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-type name="TiledBackground" sid="9980973162659257">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="8940884417700463">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <texture original-source="C:\Users\Klein\Desktop\NWI 2 LINFEAU\Sprite\19098.png" />
+        </object-type>
+        <object-type name="Block" sid="7786653068664226">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Solid" sid="8712512307345127">
+                    <behavior id="solid" />
+                </behavior-type>
+                <behavior-type name="Bullet" sid="3554104146228505">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <texture original-source="C:\Users\Klein\Desktop\NWI 2 LINFEAU\Sprite\bloc.png" />
+        </object-type>
+        <object-type name="Player" sid="684488297637819">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Platform" sid="7567099597586503">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9348518450712438" speed="5">
+                    <frame duration="1" hotspotX="0.515625" hotspotY="0.5125" original-source="C:\Users\Klein\Desktop\NWI 2 LINFEAU\Sprite\sprite.png">
+                        <collision-poly>
+                            <point x="0.25625" y="0.25625" />
+                            <point x="0.5" y="0.021875" />
+                            <point x="0.740625" y="0.259375" />
+                            <point x="0.709375" y="0.5" />
+                            <point x="0.671875" y="0.671875" />
+                            <point x="0.675" y="0.95" />
+                            <point x="0.271875" y="0.946875" />
+                            <point x="0.259375" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Touch" sid="6740946426773858">
+            <plugin id="Touch" />
+        </object-type>
+        <object-type name="Keyboard" sid="6364541965767649">
+            <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="DistanceDisplay" sid="4034908031905988">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Sprite" sid="7862468983089557">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="2" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4253961162929521" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Klein\Desktop\NWI 2 LINFEAU\Sprite\tornado-psd-2.png">
+                        <collision-poly>
+                            <point x="0.0666667" y="0.06" />
+                            <point x="0.5" y="0" />
+                            <point x="0.933333" y="0.06" />
+                            <point x="0.686111" y="0.5" />
+                            <point x="0.536111" y="0.5825" />
+                            <point x="0.5" y="0.8975" />
+                            <point x="0.219444" y="0.8025" />
+                            <point x="0.147222" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Klein\Desktop\NWI 2 LINFEAU\Sprite\tornado-psd-406804.png">
+                        <collision-poly>
+                            <point x="0.0666667" y="0.06" />
+                            <point x="0.5" y="0" />
+                            <point x="0.933333" y="0.06" />
+                            <point x="0.852778" y="0.5" />
+                            <point x="0.780556" y="0.8025" />
+                            <point x="0.5" y="0.8975" />
+                            <point x="0.463889" y="0.5825" />
+                            <point x="0.313889" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TiledBackground2" sid="9417114254465215">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\Klein\Desktop\NWI 2 LINFEAU\Sprite\19098.png" />
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>Layout 1.xml</layout>
+        <layout>Layout 2.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>Event sheet 1.xml</event-sheet>
+        <event-sheet>Event sheet 2.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Touch" uid="4">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+        <global-instance type="Keyboard" uid="5" />
+    </global-instances>
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>
