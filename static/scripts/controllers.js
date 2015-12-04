@@ -3,6 +3,11 @@
 	
 	controllers.controller('MapController', ['$scope', function($scope) {
 		$scope.$root.safeState = "start";
+		$scope.car = false;
+		
+		$scope.toggleCar = function(bool){
+			$scope.car = bool;
+		}
 		
 		$scope.saveMe = function(){
 			$scope.$root.safeState = "unsafe";

@@ -10,10 +10,14 @@
 	padding: 10px;
 }
 
-.map_page .buttons_container .btn{
+.map_page .buttons_container > .btn{
 	width: 100%;
 	height: 50px;
 	margin: 2px 0;
+}
+
+.map_page .buttons_container .btn-group{
+	float: right;
 }
 
 .start .map_page .buttons_container .btn.signalDanger,
