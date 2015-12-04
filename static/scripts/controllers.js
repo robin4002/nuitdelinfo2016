@@ -161,14 +161,20 @@
 		$scope.signalMeSafe = function(){
 			$scope.$root.safeState = "safe";
 		};
+		$scope.closeQuestions = function(){
+			$scope.questions = false;
+			$scope.step = 0;
+		}
 		
 	}])
 	.controller('InfosController', ['$scope', function($scope) {
 		
-		$scope.infos = {
-			hide : true,
-			catastropheType : "avalanche" 
-		}
+		$scope.catastropheType = undefined;
+		
+		$scope.openInfos = function(catastrophe){
+			$scope.catastropheType = catastrophe;
+			console.log(catastrophe + " " + $scope.catastropheType);
+		};
 		
 	}])
 	.controller('NotifsController', ['$scope', 'ModelsManager', function($scope, ModelsManager) {

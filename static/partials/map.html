@@ -1,14 +1,24 @@
 <div class="map_page">
 	<div class="questions" ng-class="{active: questions}">
 		<div class="step" ng-class="{active: step == 1}">
-			<button type="button" class="catastrophe">Inondation</button>
-			<button type="button" class="catastrophe">Incendie</button>
-			<button type="button" class="catastrophe">Séisme</button>
-			<button type="button" class="catastrophe">Cyclone</button>
-			<button type="button" class="catastrophe">Éruption</button>
-			<button type="button" class="catastrophe">Tempêtes</button>
-			<button type="button" class="catastrophe">Ouragans</button>
-			<button type="button" class="catastrophe">Tsunami</button>
+			<button type="button" class="catastrophe"
+				ng-click="closeQuestions()">Inondation</button>
+			<button type="button" class="catastrophe"
+				ng-click="closeQuestions()">Incendie</button>
+			<button type="button" class="catastrophe"
+				ng-click="closeQuestions()">Séisme</button>
+			<button type="button" class="catastrophe"
+				ng-click="closeQuestions()">Cyclone</button>
+			<button type="button" class="catastrophe"
+				ng-click="closeQuestions()">Éruption</button>
+			<button type="button" class="catastrophe"
+				ng-click="closeQuestions()">Tempêtes</button>
+			<button type="button" class="catastrophe"
+				ng-click="closeQuestions()">Ouragans</button>
+			<button type="button" class="catastrophe"
+				ng-click="closeQuestions()">Tsunami</button>
+			<button type="button" class="catastrophe"
+				ng-click="closeQuestions()">Invasion de l'empire</button>
 		</div>
 		<div class="step" ng-class="{active: step == 2}">
 			<button type="button">Inondation</button>

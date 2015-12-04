@@ -8,49 +8,98 @@
 	<h2>Consignes générales</h2>
 		</td>
 		<td>
-	<button type="button" class="btn btn-default btn-lg" ng-click="infos.hide = !infos.hide">></button>
+		<button type="button" class="btn btn-default btn-lg" ng-if="catastropheType != undefined" ng-click="openInfos(undefined)">x</button>
 		</td>
 	</tr>
 	</table>
+	<div ng-if="catastropheType == undefined">
+		<button type="button" class="catastrophe"
+			ng-click="openInfos('Inondation')">Inondation</button>
+		<button type="button" class="catastrophe"
+			ng-click="openInfos('Incendie')">Incendie</button>
+		<button type="button" class="catastrophe"
+			ng-click="openInfos('Seisme')">Séisme</button>
+		<button type="button" class="catastrophe"
+			ng-click="openInfos('Cyclone')">Cyclone</button>
+		<button type="button" class="catastrophe"
+			ng-click="openInfos('Eruption')">Éruption</button>
+		<button type="button" class="catastrophe"
+			ng-click="openInfos('Tempete')">Tempête</button>
+		<button type="button" class="catastrophe"
+			ng-click="openInfos('Ouragan')">Ouragan</button>
+		<button type="button" class="catastrophe"
+			ng-click="openInfos('Tsunami')">Tsunami</button>
+		<button type="button" class="catastrophe"
+			ng-click="openInfos('Avalanche')">Avalanche</button>
+		<button type="button" class="catastrophe"
+			ng-click="openInfos('Empire')">Invasion de l'Empire</button>
+	</div>
+	<div ng-switch="catastropheType">
+		<ul ng-switch-when="Avalanche">
+			<li> tenter de fuir latéralement</li>
 	
-
-
-
-	<div ng-switch="infos.catastropheType" ng-hide="infos.hide">
-	<ul ng-switch-when="avalanche">
-		<li> tenter de fuir latéralement</li>
-
-		<li>se débarrasser des sacs et bâtons</li>
-
-		<li>fermer la bouche et se cramponner à tout</li>
-
-		<li>essayer de se maintenir à la surface par de grands mouvements de natation</li>
+			<li>se débarrasser des sacs et bâtons</li>
+	
+			<li>fermer la bouche et se cramponner à tout</li>
+	
+			<li>essayer de se maintenir à la surface par de grands mouvements de natation</li>
+			
+		</ul>
+		<ul ng-switch-when="Inondation">
+			
+			<li>s'informer par la radio de la montée des eaux et des lieux de regroupement</li>
+	
+			<li>dès l'alerte, aller sur les points hauts (étage, collines,…)</li>
+		</ul>	
+		<ul ng-switch-when="Seisme">
+			
+			<li>rester ou l'on est</li>
+	
+			<li>à l'intérieur : se mettre à l'abri près d'un mur, une colonne</li>
+	
+			<li>à l'extérieur : s'éloigner de ce qui peut s'effondrer</li>
+		</ul>	
+		<ul ng-switch-when="Incendie">
+			<li>tenter de fuir dos au vent</li>
+	
+			<li>si possible, attaquer le feu</li>
+	
+			<li>si l'on est surpris par le feu, respirer avec un linge humide, rechercher un écran (mur, rocher,…)</li>
+	
+			<li>une maison bien protégée avec les aérations occultées par des linges humides est le meilleur abri</li>
+			
+		</ul>
 		
-	</ul>
-	<ul ng-switch-when="inondation">
 		
-		<li>s'informer par la radio de la montée des eaux et des lieux de regroupement</li>
-
-		<li>dès l'alerte, aller sur les points hauts (étage, collines,…)</li>
-	</ul>	
-	<ul ng-switch-when="seisme">
-		
-		<li>rester ou l'on est</li>
-
-		<li>à l'intérieur : se mettre à l'abri près d'un mur, une colonne</li>
-
-		<li>à l'extérieur : s'éloigner de ce qui peut s'effondrer</li>
-	</ul>	
-	<ul ng-switch-when="incendie">
-		<li>tenter de fuir dos au vent</li>
-
-		<li>si possible, attaquer le feu</li>
-
-		<li>si l'on est surpris par le feu, respirer avec un linge humide, rechercher un écran (mur, rocher,…)</li>
-
-		<li>une maison bien protégée avec les aérations occultées par des linges humides est le meilleur abri</li>
-		
-	</ul>
+		<ul ng-switch-when="Tsunami">
+			<li>Un tsunami est prévisible : évacuer les lieux</li>
+	
+			<li>Aller à l'interieur des terres, ou aller sur des points élevés (30 mètres au dessus de la mer)</li>
+			<li>Aller loin des côtes (d'au moins 3km)</li>
+			
+		</ul>
+		<ul ng-switch-when="Tempete">
+			<li>S'éloigner des abres, fils et de tout ce qui peut tomber</li>
+			<li>Rejoindre un terrain plat</li>
+			<li>Eviter les endroit bas (risques d'innondations)</li>
+		</ul>
+		<ul ng-switch-when="Ouragan">
+			<li>Rejoindre un terrain élevé</li>
+			<li>Ne pas rester au bord de la mer (larmes déferlantes et ondes de tempête)</li>
+		</ul>
+		<ul ng-switch-when="Eruption">
+			<li>Rejoindre les points de ralliement</li>
+			<li>S'éloigner des zones menacées</li>
+			<li>Éviter les fonds des vallées et les sous-sols</li>
+			<li>Rejoindre un endroit abrité et solide</li>
+		</ul>
+		<ul ng-switch-when="Cyclone">
+			<li>Rester à l'intérieur</li>
+		</ul>
+		<ul ng-switch-when="Empire">
+			<li>Dirigez-vous vers la navette spaciale la plus proche</li>
+			<li>Apellez votre Jedi préféré !</li>
+		</ul>
 	</div>
 
 	
