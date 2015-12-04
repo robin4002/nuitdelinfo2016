@@ -1,0 +1,70 @@
+<html ng-app="SaveMe">
+	<head>
+		<title>SaveMe</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3cynWu6pM9IPxCo9rrTjd9pA7G76OAkI"></script>
+
+		<script>
+			var saveMe = angular.module('SaveMe', []);
+			
+			saveMe.config(['$httpProvider', function($httpProvider) {
+				$httpProvider.defaults.useXDomain = true;
+				delete $httpProvider.defaults.headers.common['X-Requested-With'];
+			}]);
+			
+			saveMe.controller('MainController', ['$scope', '$timeout', '$http', function($scope, $timeout, $http) {
+				$scope.map;
+				$timeout(function() {
+					var initMap = function() {
+						$scope.map = new google.maps.Map(document.getElementById('map'), {
+							center: {
+								lat: -34.397,
+								lng: 150.644
+							},
+							zoom: 10
+						});
+						
+						navigator.geolocation.watchPosition(function(position) {
+							$scope.coords = position.coords.latitude + ',' + position.coords.longitude;
+							$scope.coords2 = (position.coords.latitude + 2) + ',' + position.coords.longitude;
+							$scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+						});
+					};
+					initMap();
+				});
+				
+				$scope.addMarker = function(coordinates) {
+					
+				};
+				
+				$scope.directionsService = new google.maps.DirectionsService;
+				$scope.directionsDisplay = new google.maps.DirectionsRenderer;
+				$scope.findPath = function() {
+					$scope.directionsDisplay.setMap($scope.map);
+					$scope.directionsService.route({
+						origin: $scope.coords,
+						destination: $scope.coords2,
+						travelMode: google.maps.TravelMode.DRIVING
+					}, function(response, status) {
+						if (status === google.maps.DirectionsStatus.OK) {
+							console.log(response);
+							$scope.directionsDisplay.setDirections(response);
+						} else {
+							window.alert('Directions request failed due to ' + status);
+						}
+					});
+				};
+			}]);
+		</script>
+		<style>
+			#map {
+				width: 800px;
+				height: 500px;
+			}
+		</style>
+	</head>
+	<body ng-controller="MainController">
+		<div id="map" width="400" height="400"></div>
+		<input type="button" ng-click="findPath()">
+	</body>
+</html>
