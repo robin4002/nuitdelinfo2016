@@ -19,7 +19,11 @@
 				templateUrl: '/partials/infos.html',
 				controller: 'InfosController'
 			})
-			
+			.state('notifs', {
+				url: '/notifications',
+				templateUrl: '/partials/notifs.html',
+				controller: 'NotifsController'
+			})
 			.state('test', {
 				url: '/test',
 				templateUrl: '/partials/test.html',

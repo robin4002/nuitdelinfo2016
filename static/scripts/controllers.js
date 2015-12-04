@@ -112,12 +112,12 @@
 		}
 		
 	}])
-	.controller('notifsController', ['$scope', function($scope) {
-		
-		$scope.infos = {
-			hide : true,
-			catastropheType : "avalanche" 
-		}
+	.controller('NotifsController', ['$scope', 'ModelsManager', function($scope, ModelsManager) {
+		$scope.Notifs = new ModelsManager('notification');
+		$scope.Notifs.get().then(function(notifications) {
+
+			console.log(notifications)
+		});
 		
 	}]);
 }).call(this);
