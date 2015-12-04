@@ -1,6 +1,7 @@
 (function() {
 	var saveMe = angular.module('SaveMe', [
 		'ui.router',
+		'services',
 		'controllers'
 	]);
 	
@@ -11,6 +12,11 @@
 				url: '/map',
 				templateUrl: '/partials/map.html',
 				controller: 'MapController'
+			})
+			.state('test', {
+				url: '/test',
+				templateUrl: '/partials/test.html',
+				controller: 'TestController'
 			})
 	}]);
 }).call(this);

@@ -10,7 +10,7 @@ app
             }
         })
     })
-    .get('/dangerType/:id', function(req, res){
+    .get('/dangerTypes/:id', function(req, res){
         DangerTypes.find({_id: req.params.id}).exec(function(err, result){
             if(err) {
                 res.status(500).json({})
@@ -21,7 +21,7 @@ app
             }
         })
     })
-    .post('/dangerType', function(req, res){
+    .post('/dangerTypes', function(req, res){
         var type = new DangerTypes(req.body);
         type.save(function(err, result) {
             if(err) {
@@ -33,7 +33,7 @@ app
             }
         });
     })
-    .put('/dangerType/:id', function(req, res){
+    .put('/dangerTypes/:id', function(req, res){
         DangerTypes.findOneAndUpdate({_id: req.params.id}, req.body, function(err, result) {
             if(err) {
                 res.status(500).json({})
@@ -44,7 +44,7 @@ app
             }
         });
     })
-    .delete('/dangerType/:id', function(req, res){
+    .delete('/dangerTypes/:id', function(req, res){
         DangerTypes.findOneAndRemove({_id: req.params.id}, req.body, function(err, result) {
             if (err) {
                 res.status(500).json({})

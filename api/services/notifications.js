@@ -10,7 +10,7 @@ app
             }
         })
     })
-    .get('/notification/:id', function(req, res){
+    .get('/notifications/:id', function(req, res){
         Notifications.find({_id: req.params.id}).exec(function(err, result){
             if(err) {
                 res.status(500).json({})
@@ -21,7 +21,7 @@ app
             }
         })
     })
-    .post('/notification', function(req, res){
+    .post('/notifications', function(req, res){
         var notif = new Notifications(req.body);
         notif.save(function(err, result) {
             if(err) {
@@ -33,7 +33,7 @@ app
             }
         });
     })
-    .put('/notification/:id', function(req, res){
+    .put('/notifications/:id', function(req, res){
         Notifications.findOneAndUpdate({_id: req.params.id}, req.body, function(err, result) {
             if(err) {
                 res.status(500).json({})
@@ -44,7 +44,7 @@ app
             }
         });
     })
-    .delete('/notification/:id', function(req, res){
+    .delete('/notifications/:id', function(req, res){
         Notifications.findOneAndRemove({_id: req.params.id}, req.body, function(err, result) {
             if (err) {
                 res.status(500).json({})

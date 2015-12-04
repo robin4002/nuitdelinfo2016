@@ -10,7 +10,7 @@ app
             }
         })
     })
-    .get('/safePlace/:id', function(req, res){
+    .get('/safePlaces/:id', function(req, res){
         SafePlaces.find({_id: req.params.id}).exec(function(err, result){
             if(err) {
                 res.status(500).json({})
@@ -21,7 +21,7 @@ app
             }
         })
     })
-    .post('/safePlace', function(req, res){
+    .post('/safePlaces', function(req, res){
         var place = new SafePlaces(req.body);
         place.save(function(err, result) {
             if(err) {
@@ -33,7 +33,7 @@ app
             }
         });
     })
-    .put('/safePlace/:id', function(req, res){
+    .put('/safePlaces/:id', function(req, res){
         SafePlaces.findOneAndUpdate({_id: req.params.id}, req.body, function(err, result) {
             if(err) {
                 res.status(500).json({})
@@ -44,7 +44,7 @@ app
             }
         });
     })
-    .delete('/safePlace/:id', function(req, res){
+    .delete('/safePlaces/:id', function(req, res){
         SafePlaces.findOneAndRemove({_id: req.params.id}, req.body, function(err, result) {
             if (err) {
                 res.status(500).json({})
