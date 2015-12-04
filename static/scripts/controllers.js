@@ -107,7 +107,7 @@
 									$scope.addMarker({
 										lat: healthPlaces[i].coordinates[0],
 										lng: healthPlaces[i].coordinates[1]
-									}, healthPlaces[i].name, '/img/good.png');
+									}, healthPlaces[i].name, '/img/Hospital-32.png');
 								}
 								
 								$scope.findPathToward({lat: safePlaces[0].coordinates[0], lng: safePlaces[0].coordinates[1]});

@@ -1,16 +1,15 @@
 
 <div class="consignes">
-	
+	<a class="link" href="/#/map">MAP</a>
 	<table class="table table-bordered">
-		
-	<tr>
-		<td>
-	<h2>Consignes générales</h2>
-		</td>
-		<td>
-		<button type="button" class="btn btn-default btn-lg" ng-if="catastropheType != undefined" ng-click="openInfos(undefined)">x</button>
-		</td>
-	</tr>
+		<tr>
+			<td>
+		<h2>Consignes générales</h2>
+			</td>
+			<td>
+			<button type="button" class="btn btn-default btn-lg" ng-if="catastropheType != undefined" ng-click="openInfos(undefined)">x</button>
+			</td>
+		</tr>
 	</table>
 	<div ng-if="catastropheType == undefined">
 		<button type="button" class="catastrophe"

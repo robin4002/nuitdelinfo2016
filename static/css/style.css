@@ -77,3 +77,11 @@
     margin: 5px;
 }
 
+.link{
+	position: absolute;
+	z-index: 2;
+	top: 10px;
+	right: 10px;
+	padding: 10px;
+	background: white;
+}
