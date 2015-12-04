@@ -1,6 +1,8 @@
 (function() {
 	var controllers = angular.module('controllers', []);
 	
+
+
 	controllers.controller('MapController', ['$scope', '$timeout', 'ModelsManager', function($scope, $timeout, ModelsManager) {
 		$scope.SafePlacesManager = new ModelsManager('safePlace');
 		$scope.DangerousPlacesManager = new ModelsManager('dangerousPlace');
@@ -141,29 +143,40 @@
 				}
 			});
 		};
+		
+		
 			
 		$scope.$root.safeState = "start";
 		$scope.car = false;
-		
+		$scope.questions = false;
+		$scope.step = 0;
 		$scope.toggleCar = function(bool){
 			$scope.car = bool;
-		}
-		
+		};
 		$scope.saveMe = function(){
 			$scope.$root.safeState = "unsafe";
-		}
-		
+			$scope.questions = true;
+			$scope.step = 1;
+		};
 		$scope.signalMeSafe = function(){
 			$scope.$root.safeState = "safe";
+		};
+		
+	}])
+	.controller('InfosController', ['$scope', function($scope) {
+		
+		$scope.infos = {
+			hide : true,
+			catastropheType : "avalanche" 
 		}
-	}]);
-	
-	controllers.controller('TestController', ['$scope', 'ModelsManager', function($scope, ModelsManager) {
-		$scope.SafePlacesManager = new ModelsManager('safePlace');
-		$scope.SafePlacesManager.get().then(function(safePlaces) {
-			console.log(safePlaces);
-		}, function(data) {
-			console.log(data);
+		
+	}])
+	.controller('NotifsController', ['$scope', 'ModelsManager', function($scope, ModelsManager) {
+		$scope.Notifs = new ModelsManager('notification');
+		$scope.Notifs.get().then(function(notifications) {
+
+			console.log(notifications)
 		});
+		
 	}]);
 }).call(this);

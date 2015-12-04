@@ -1,10 +1,16 @@
+
+
+.consignes button{
+	margin-top:25px;
+}
+
 #map {
 	width: 100%;
 	height: 100%;
+
 }
 
 .map_page{
-	/*background: red;*/
 	height: 100%;
 }
 
@@ -35,22 +41,39 @@
 .unsafe .map_page .buttons_container .btn.saveMe,
 .safe .map_page .buttons_container .btn.saveMe{
 	display: none;
+
 }
+
+
 
 .map_page .questions{
 	position: absolute;
     top: 0;
     left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
     padding: 20px;
     text-align: center;
+	display: none;
+	z-index: 3;
 }
 
-.map_page .questions .step_1{
-	
+.map_page .questions.active{
+	display: block;
 }
 
-.map_page .questions button.catastrophe{
+.map_page .questions .step{
+	display: none;
+}
+
+.map_page .questions .step.active{
+	display: block;
+}
+
+.map_page .questions button{
 	width: 90px;
     height: 70px;
     margin: 5px;
 }
+
