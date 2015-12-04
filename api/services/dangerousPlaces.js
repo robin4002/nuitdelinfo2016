@@ -10,7 +10,7 @@ app
             }
         })
     })
-    .get('/dangerousPlace/:id', function(req, res){
+    .get('/dangerousPlaces/:id', function(req, res){
         DangerousPlaces.find({_id: req.params.id}).exec(function(err, result){
             if(err) {
                 res.status(500).json({})
@@ -21,7 +21,7 @@ app
             }
         })
     })
-    .post('/dangerousPlace', function(req, res){
+    .post('/dangerousPlaces', function(req, res){
         var place = new DangerousPlaces(req.body);
         place.save(function(err, result) {
             if(err) {
@@ -33,7 +33,7 @@ app
             }
         });
     })
-    .put('/dangerousPlace/:id', function(req, res){
+    .put('/dangerousPlaces/:id', function(req, res){
         DangerousPlaces.findOneAndUpdate({_id: req.params.id}, req.body, function(err, result) {
             if(err) {
                 res.status(500).json({})
@@ -44,7 +44,7 @@ app
             }
         });
     })
-    .delete('/dangerousPlace/:id', function(req, res){
+    .delete('/dangerousPlaces/:id', function(req, res){
         DangerousPlaces.findOneAndRemove({_id: req.params.id}, req.body, function(err, result) {
             if (err) {
                 res.status(500).json({})
