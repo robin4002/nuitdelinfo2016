@@ -1,6 +1,6 @@
 <div class="map_page">
-	<div class="questions">
-		<div class="step_1">
+	<div class="questions" ng-class="{active: questions}">
+		<div class="step" ng-class="{active: step == 1}">
 			<button type="button" class="catastrophe">Inondation</button>
 			<button type="button" class="catastrophe">Incendie</button>
 			<button type="button" class="catastrophe">Séisme</button>
@@ -9,6 +9,10 @@
 			<button type="button" class="catastrophe">Tempêtes</button>
 			<button type="button" class="catastrophe">Ouragans</button>
 			<button type="button" class="catastrophe">Tsunami</button>
+		</div>
+		<div class="step" ng-class="{active: step == 2}">
+			<button type="button">Inondation</button>
+			<button type="button">Incendie</button>
 		</div>
 	</div>
 	<div id="map" class="map_full"></div>
