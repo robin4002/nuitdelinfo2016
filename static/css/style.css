@@ -2,3 +2,33 @@
 	width: 100%;
 	height: 100%;
 }
+
+.map_page{
+	/*background: red;*/
+	height: 100%;
+}
+
+.map_page .buttons_container{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 10px;
+}
+
+.map_page .buttons_container .btn{
+	width: 100%;
+	height: 50px;
+	margin: 2px 0;
+}
+
+.start .map_page .buttons_container .btn.signalDanger,
+.start .map_page .buttons_container .btn.signalMeSafe,
+.safe .map_page .buttons_container .btn.signalDanger,
+.safe .map_page .buttons_container .btn.signalMeSafe{
+	display: none;
+}
+
+.unsafe .map_page .buttons_container .btn.saveMe,
+.safe .map_page .buttons_container .btn.saveMe{
+	display: none;
+}

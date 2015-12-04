@@ -92,6 +92,16 @@
 				}
 			});
 		};
+			
+		$scope.$root.safeState = "start";
+		
+		$scope.saveMe = function(){
+			$scope.$root.safeState = "unsafe";
+		}
+		
+		$scope.signalMeSafe = function(){
+			$scope.$root.safeState = "safe";
+		}
 	}]);
 	
 	controllers.controller('TestController', ['$scope', 'ModelsManager', function($scope, ModelsManager) {

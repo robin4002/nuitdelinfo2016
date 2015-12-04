@@ -20,7 +20,10 @@ DisasterTypes = mongoose.model('DisasterTypes', {
 SafePlaces = mongoose.model('SafePlaces', {
     official: Boolean,
     numberOfPeople: Number,
-    fillingProgression: Number,
+    fillingProgression: {
+        type: Number,
+        default: 0
+    },
     coordinates: {
         type: [Number],
         index: '2d'
