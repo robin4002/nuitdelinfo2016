@@ -10,57 +10,106 @@
 		$scope.directionsService = new google.maps.DirectionsService;
 		$scope.directionsDisplay = new google.maps.DirectionsRenderer;
 		
-		$scope.findPathToward = function(destination) {
-			
+		$scope.findPathToward = function(destination, waypoints) {
+			$scope.findPath($scope.userPosition, destination, undefined, function(response) {
+				$scope.directionsDisplay.setDirections(response);
+			});
+			return;
+			if (waypoints === undefined) {
+				waypoints = new Array();
+			}
+			$scope.findPath($scope.userPosition, destination, waypoints, function(response) {
+				console.log(response);
+				var first = true;
+				for (var i in response.routes[0].overview_path) {
+					if (first) {
+						first = false;
+						continue;
+					}
+					var coef = (destination.lng - $scope.userPosition.lng) / (destination.lat - $scope.userPosition.lat);
+					var add = ($scope.userPosition.lng - ($scope.userPosition.lat * coef));
+					
+					var x = $scope.userPosition.lat;
+					while ((($scope.userPosition.lat < destination.lat) && x < destination.lat) || (($scope.userPosition.lat > destination.lat) && x > destination.lat)) {
+						x += 0.01;
+						var y = x * coef + add;
+						for (j in $scope.dangerousPlaces) {
+							var dist = Math.sqrt(Math.pow(destination.lat - $scope.userPosition.lat, 2) + Math.pow(destination.lng - $scope.userPosition.lng, 2));
+							if (dist < 0.1) {
+								var newX = x + 0.15;
+								var newY = newX * (1 / coef);
+								waypoints = [{
+									location: {
+										lat: newX,
+										lng: newY
+									}
+								}];
+								$scope.findPathToward(destination, waypoints);
+								return;
+							}
+						}
+						$scope.directionsDisplay.setDirections(response);
+					}
+				}
+			});
 		}
 		
 		$timeout(function() {
 			var initMap = function() {
-				$scope.map = new google.maps.Map(document.getElementById('map'), {
-					center: {
-						lat: -34.397,
-						lng: 150.644
-					},
-					zoom: 17
-				});
-				$scope.directionsDisplay.setMap($scope.map);
-				
-				navigator.geolocation.watchPosition(function(position) {
+				navigator.geolocation.getCurrentPosition(function(position) {
 					$scope.userPosition = {
 						lat: position.coords.latitude,
 						lng: position.coords.longitude
 					};
-					$scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-				});
-				
-				$scope.SafePlacesManager.get().then(function(safePlaces) {
-					$scope.DangerousPlacesManager.get().then(function(dangerousPlaces) {
-						$scope.HealthPlacesManager.get().then(function(healthPlaces) {
-							for (var i in $scope.markers) {
-								$scope.markers[i].setMap($scope.map);
-							}
-							$scope.markers = new Array();
-							
-							for (var i in safePlaces) {
-								$scope.addMarker({
-									lat: safePlaces[i].coordinates[0],
-									lng: safePlaces[i].coordinates[1]
-								}, safePlaces[i].name, '/img/good.png');
-							}
-							
-							for (var i in dangerousPlaces) {
-								$scope.addMarker({
-									lat: dangerousPlaces[i].coordinates[0],
-									lng: dangerousPlaces[i].coordinates[1]
-								}, dangerousPlaces[i].name, '/img/bad.png');
-							}
-							
-							for (var i in healthPlaces) {
-								$scope.addMarker({
-									lat: healthPlaces[i].coordinates[0],
-									lng: healthPlaces[i].coordinates[1]
-								}, healthPlaces[i].name, '/img/good.png');
-							}
+					$scope.map = new google.maps.Map(document.getElementById('map'), {
+						center: {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude
+						},
+						zoom: 17
+					});
+					$scope.directionsDisplay.setMap($scope.map);
+					
+					navigator.geolocation.watchPosition(function(position) {
+						$scope.userPosition = {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude
+						};
+						$scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+					});
+					
+					$scope.SafePlacesManager.get().then(function(safePlaces) {
+						$scope.DangerousPlacesManager.get().then(function(dangerousPlaces) {
+							$scope.HealthPlacesManager.get().then(function(healthPlaces) {
+								$scope.dangerousPlaces = dangerousPlaces;
+								for (var i in $scope.markers) {
+									$scope.markers[i].setMap($scope.map);
+								}
+								$scope.markers = new Array();
+								
+								for (var i in safePlaces) {
+									$scope.addMarker({
+										lat: safePlaces[i].coordinates[0],
+										lng: safePlaces[i].coordinates[1]
+									}, safePlaces[i].name, '/img/good.png');
+								}
+								
+								for (var i in dangerousPlaces) {
+									$scope.addMarker({
+										lat: dangerousPlaces[i].coordinates[0],
+										lng: dangerousPlaces[i].coordinates[1]
+									}, dangerousPlaces[i].name, '/img/bad.png');
+								}
+								
+								for (var i in healthPlaces) {
+									$scope.addMarker({
+										lat: healthPlaces[i].coordinates[0],
+										lng: healthPlaces[i].coordinates[1]
+									}, healthPlaces[i].name, '/img/good.png');
+								}
+								
+								$scope.findPathToward({lat: safePlaces[0].coordinates[0], lng: safePlaces[0].coordinates[1]});
+							});
 						});
 					});
 				});
@@ -78,15 +127,15 @@
 			$scope.markers.push(marker);
 		};
 		
-		$scope.findPath = function(origin, destination) {
+		$scope.findPath = function(origin, destination, waypoints, callback) {
 			$scope.directionsService.route({
 				origin: origin,
 				destination: destination,
-				travelMode: google.maps.TravelMode.DRIVING
+				travelMode: google.maps.TravelMode.DRIVING,
+				waypoints: waypoints
 			}, function(response, status) {
 				if (status === google.maps.DirectionsStatus.OK) {
-					console.log(response);
-					$scope.directionsDisplay.setDirections(response);
+					callback(response);
 				} else {
 					window.alert('Directions request failed due to ' + status);
 				}
