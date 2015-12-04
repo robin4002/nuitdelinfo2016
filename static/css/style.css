@@ -36,3 +36,21 @@
 .safe .map_page .buttons_container .btn.saveMe{
 	display: none;
 }
+
+.map_page .questions{
+	position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.map_page .questions .step_1{
+	
+}
+
+.map_page .questions button.catastrophe{
+	width: 90px;
+    height: 70px;
+    margin: 5px;
+}
