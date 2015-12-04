@@ -1,8 +1,59 @@
 
-<div id="consignes">
+<div class="consignes">
+	
+	<table class="table table-bordered">
+		
+	<tr>
+		<td>
 	<h2>Consignes générales</h2>
+		</td>
+		<td>
 	<button type="button" class="btn btn-default btn-lg" ng-click="infos.hide = !infos.hide">></button>
-	<ul data-ng-hide="infos.hide" data-ng-repeat="consigne in infos.consignes">
-		<li>{{consigne}}</li>
+		</td>
+	</tr>
+	</table>
+	
+
+
+
+	<div ng-switch="infos.catastropheType" ng-hide="infos.hide">
+	<ul ng-switch-when="avalanche">
+		<li> tenter de fuir latéralement</li>
+
+		<li>se débarrasser des sacs et bâtons</li>
+
+		<li>fermer la bouche et se cramponner à tout</li>
+
+		<li>essayer de se maintenir à la surface par de grands mouvements de natation</li>
+		
 	</ul>
+	<ul ng-switch-when="inondation">
+		
+		<li>s'informer par la radio de la montée des eaux et des lieux de regroupement</li>
+
+		<li>dès l'alerte, aller sur les points hauts (étage, collines,…)</li>
+	</ul>	
+	<ul ng-switch-when="seisme">
+		
+		<li>rester ou l'on est</li>
+
+		<li>à l'intérieur : se mettre à l'abri près d'un mur, une colonne</li>
+
+		<li>à l'extérieur : s'éloigner de ce qui peut s'effondrer</li>
+	</ul>	
+	<ul ng-switch-when="incendie">
+		<li>tenter de fuir dos au vent</li>
+
+		<li>si possible, attaquer le feu</li>
+
+		<li>si l'on est surpris par le feu, respirer avec un linge humide, rechercher un écran (mur, rocher,…)</li>
+
+		<li>une maison bien protégée avec les aérations occultées par des linges humides est le meilleur abri</li>
+		
+	</ul>
+	</div>
+
+	
+
+
 </div>

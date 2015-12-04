@@ -12,5 +12,10 @@
 				templateUrl: '/partials/map.html',
 				controller: 'MapController'
 			})
+			.state('infos', {
+				url: '/infos',
+				templateUrl: '/partials/infos.html',
+				controller: 'InfosController'
+			})
 	}]);
 }).call(this);
