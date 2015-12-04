@@ -92,18 +92,21 @@
 				}
 			});
 		};
+		
+		
 			
 		$scope.$root.safeState = "start";
 		$scope.car = false;
-		
+		$scope.questions = false;
+		$scope.step = 0;
 		$scope.toggleCar = function(bool){
 			$scope.car = bool;
 		}
-		
 		$scope.saveMe = function(){
 			$scope.$root.safeState = "unsafe";
+			$scope.questions = true;
+			$scope.step = 1;
 		}
-		
 		$scope.signalMeSafe = function(){
 			$scope.$root.safeState = "safe";
 		}
