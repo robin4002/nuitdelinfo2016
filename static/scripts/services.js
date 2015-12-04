@@ -1,7 +1,7 @@
 (function() {
   var services;
   var domains = {
-    api: 'http://localhost:80'
+    api: '/'
   };
 
   services = angular.module('services', []);
