@@ -1,11 +1,21 @@
 var express = require('express');
 var http = require('http');
-var mongoose = require('mongoose');
-app = express();
+mongoose = require('mongoose');
 var requireDir = require('require-dir');
+var bodyParser = require('body-parser');
+
+app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+mongoose.connect('mongodb://localhost/saveme');
 
 
-var services = requireDir('./services/');
+models = require('./models.js');
+services = requireDir('./services/');
 
 
 var server = app.listen(8080, function() {
