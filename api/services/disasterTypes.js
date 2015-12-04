@@ -10,7 +10,7 @@ app
             }
         })
     })
-    .get('/disasterType/:id', function(req, res){
+    .get('/disasterTypes/:id', function(req, res){
         DisasterTypes.find({_id: req.params.id}).exec(function(err, result){
             if(err) {
                 res.status(500).json({})
@@ -21,7 +21,7 @@ app
             }
         })
     })
-    .post('/disasterType', function(req, res){
+    .post('/disasterTypes', function(req, res){
         var type = new DisasterTypes(req.body);
         type.save(function(err, result) {
             if(err) {
@@ -33,7 +33,7 @@ app
             }
         });
     })
-    .put('/disasterType/:id', function(req, res){
+    .put('/disasterTypes/:id', function(req, res){
         DisasterTypes.findOneAndUpdate({_id: req.params.id}, req.body, function(err, result) {
             if(err) {
                 res.status(500).json({})
@@ -44,7 +44,7 @@ app
             }
         });
     })
-    .delete('/disasterType/:id', function(req, res){
+    .delete('/disasterTypes/:id', function(req, res){
         DisasterTypes.findOneAndRemove({_id: req.params.id}, req.body, function(err, result) {
             if (err) {
                 res.status(500).json({})

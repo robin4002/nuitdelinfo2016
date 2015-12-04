@@ -10,7 +10,7 @@ app
             }
         })
     })
-    .get('/healthPlace/:id', function(req, res){
+    .get('/healthPlaces/:id', function(req, res){
         HealthPlaces.find({_id: req.params.id}).exec(function(err, result){
             if(err) {
                 res.status(500).json({})
@@ -21,7 +21,7 @@ app
             }
         })
     })
-    .post('/healthPlace', function(req, res){
+    .post('/healthPlaces', function(req, res){
         var place = new HealthPlaces(req.body);
         place.save(function(err, result) {
             if(err) {
@@ -33,7 +33,7 @@ app
             }
         });
     })
-    .put('/healthPlace/:id', function(req, res){
+    .put('/healthPlaces/:id', function(req, res){
         HealthPlaces.findOneAndUpdate({_id: req.params.id}, req.body, function(err, result) {
             if(err) {
                 res.status(500).json({})
@@ -44,7 +44,7 @@ app
             }
         });
     })
-    .delete('/healthPlace/:id', function(req, res){
+    .delete('/healthPlaces/:id', function(req, res){
         HealthPlaces.findOneAndRemove({_id: req.params.id}, req.body, function(err, result) {
             if (err) {
                 res.status(500).json({})
