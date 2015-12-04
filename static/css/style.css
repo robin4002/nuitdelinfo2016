@@ -1,4 +1,6 @@
 .map_page{
+	/*background: red;*/
+	height: 100%;
 }
 
 .map_page .buttons_container{
@@ -13,3 +15,16 @@
 	height: 50px;
 	margin: 2px 0;
 }
+
+.start .map_page .buttons_container .btn.signalDanger,
+.start .map_page .buttons_container .btn.signalMeSafe,
+.safe .map_page .buttons_container .btn.signalDanger,
+.safe .map_page .buttons_container .btn.signalMeSafe{
+	display: none;
+}
+
+.unsafe .map_page .buttons_container .btn.saveMe,
+.safe .map_page .buttons_container .btn.saveMe{
+	display: none;
+}
+
