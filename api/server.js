@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 
 app = express();
 
+app.use(express.static('../static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -18,7 +19,7 @@ models = require('./models.js');
 services = requireDir('./services/');
 
 
-var server = app.listen(8080, function() {
+var server = app.listen(80, function() {
     var host = server.address().address;
     var port = server.address().port;
 });

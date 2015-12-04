@@ -1,7 +1,7 @@
 (function() {
   var services;
   var domains = {
-    api: 'http://nuitdelinfo.faitchier:8080'
+    api: 'http://localhost:80'
   };
 
   services = angular.module('services', []);
